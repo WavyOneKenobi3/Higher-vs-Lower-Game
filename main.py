@@ -1,2 +1,5 @@
-import game.data
+from gamedata import teams
 
+
+
+print(teams)
