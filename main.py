@@ -1,54 +1,36 @@
 from gamedata import teams
 import random
 
-'''def team_select():
-    for x in teams:                             #loop thru teams list
-        for key,value in x.items():             #select keys and values from dict. selected
+def comparison(): 
+    score = 0
+    
+    A = random.choice(teams)   #random picks 2 dictionaries from list
+    while True:
+        B = random.choice([team for team in teams if team != A])
+        if A['worth'] == B['worth']:
+            B = random.choice([team for team in teams if team != A])
+            
+        print(f" {A['team']}, Sport: {A['Sport']}, From {A['city/country']}. ")
+        print(f" {B['team']}, Sport: {B['Sport']}, From {B['city/country']}. \n")
+         
+        user_pick = input("Which Sports Team is worth more? A or B. ").lower()
         
             
-            
-            
-            
-            
-            
-team_select()'''
-
-
-def comparison(): 
-    A, B = random.sample(teams, k=2)    #random picks 2 dictionaries from list
-    print(f" {A['team']}, {A['worth']} Billion, Sprot: {A['Sport']}, From {A['city/country']}. ")
-    print(f" {B['team']}, {B['worth']} Billion, Sprot: {B['Sport']}, From {B['city/country']}. ")
-    while True:
-        user_pick = input("Which Sports Team is worth more? A or B").lower()
-        if user_pick == 'a':
-            if A["worth"] > B["worth"]:
-                print("Correct! ")  
-            else: 
-                print(f"Wrong answer, {A['worth']} Billion and {B['worth']} Billion. ")
-                break
-            B = random.sample(teams, k=1)
-            print(f" {A['team']}, {A['worth']} Billion, Sprot: {A['Sport']}, From {A['city/country']}. ")
-            print(f" {B['team']}, {B['worth']} Billion, Sprot: {B['Sport']}, From {B['city/country']}. ")
-        elif user_pick == "b":
-            if A["worth"] < B["worth"]:
-                print("Correct! ")
-            A == B 
-            B == random.sample(teams, k=1)
-            print(f" {A['team']}, {A['worth']} Billion, Sprot: {A['Sport']}, From {A['city/country']}. ")
-            print(f" {B['team']}, {B['worth']} Billion, Sprot: {B['Sport']}, From {B['city/country']}. ")
+        if user_pick == 'a'and A['worth'] > B['worth']:
+            print("Correct! ")  
+            score += 1
+            print(f" {A['team']}, {A['worth']} Billion, Sport: {A['Sport']}, From {A['city/country']}. ")
+            print(f" {B['team']}, {B['worth']} Billion, Sport: {B['Sport']}, From {B['city/country']}. \n")
+        elif user_pick == "b" and A["worth"] < B["worth"]:
+            print("Correct! ")
+            print(f" {A['team']}, {A['worth']} Billion, Sport: {A['Sport']}, From {A['city/country']}. ")
+            print(f" {B['team']}, {B['worth']} Billion, Sport: {B['Sport']}, From {B['city/country']}. \n")
+            score +=1
+            A = B 
         else: 
             print(f"Wrong answer, {A['worth']} Billion and {B['worth']} Billion. ")
             break
-            
+    print(f"Your score is {score}! ")            
 
 
 comparison()
-'''
-- which sports team is worth?
-	
-		- comparison line: team, worth, sport, city/country
-	- comparing the teams
-		- make A vs B, once get it right change B to A then B is a different team
-	- letting the user choose between
-	- function deciding right and wrong
-	- add a counter on how many you got right, then once lost end game'''
