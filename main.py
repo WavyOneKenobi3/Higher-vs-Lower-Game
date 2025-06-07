@@ -6,7 +6,7 @@ def comparison():
     
     A = random.choice(teams)   #random picks 2 dictionaries from list
     while True:
-        B = random.choice([team for team in teams if team != A])
+        B = random.choice([team for team in teams if team != A])     #make a list for B but not the same as A
         if A['worth'] == B['worth']:
             B = random.choice([team for team in teams if team != A])
             
